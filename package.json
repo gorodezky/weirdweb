@@ -1,0 +1,25 @@
+{
+  "name": "weirdweb",
+  "version": "1.0.0",
+  "description": "website for weridwolf designs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node ./server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gorodezky/weirdweb"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gorodezky/weirdweb/issues"
+  },
+  "homepage": "https://github.com/gorodezky/weirdweb#readme",
+  "dependencies": {
+    "hapi": "^16.1.0",
+    "nodemon": "^1.11.0",
+    "nunjucks": "^3.0.0",
+    "vision": "^4.1.1"
+  }
+}
