@@ -20,6 +20,7 @@
     "hapi": "^16.1.0",
     "nodemon": "^1.11.0",
     "nunjucks": "^3.0.0",
+    "bootstrap":  "^3.3.7",
     "vision": "^4.1.1"
   }
 }
