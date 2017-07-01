@@ -4,6 +4,17 @@ const Hapi = require('hapi');
 const Path = require('path');
 const Nunjucks = require('nunjucks');
 
+
+// var express = require('express');
+// var app = express();
+
+// // prepare server
+// app.use('/', express.static(__dirname + '/www')); // redirect root
+// app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
+// app.use('/js', express.static(__dirname + '/node_modules/jquery/dist')); // redirect JS jQuery
+// app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS boots
+
+
 const controllers = {};
 controllers.index = require('./controllers/index.js');
 
@@ -14,6 +25,12 @@ server.connection({
     host: process.env.HOST || '0.0.0.0', 
     port: process.env.PORT || 8000
 });
+
+server.register({  
+  register: require('inert')
+}, function(err) {
+  if (err) throw err
+})
 
 server.register(require('vision'), (err) => {
   if (err) {
@@ -52,6 +69,18 @@ server.route({
     path:'/', 
     handler: controllers.index.index,
 });
+
+server.route({  
+  method: 'GET',
+  path: '/views/{file*}',
+  handler: {
+    directory: { 
+      path: 'views/',
+      listing: true
+    }
+  }
+})
+
 server.route({
     method: 'GET',
     path:'/protected',
